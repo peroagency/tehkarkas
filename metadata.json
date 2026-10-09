@@ -2,5 +2,7 @@
   "name": "Техкаркас - Монолітне будівництво Львів",
   "description": "Будівельна компанія «Техкаркас» — професійні монолітні роботи, фундаменти, перекриття, колони та промислові підлоги у Львові та області. Власний парк опалубки.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
