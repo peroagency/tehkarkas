@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, CheckCircle2, Send, ShieldCheck } from 'lucide-react';
 import { COMPANY_INFO } from '../data/mockData';
+import { TekhKarkasLogo } from './TekhKarkasLogo';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -82,9 +83,12 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="pb-2 border-b border-slate-100 dark:border-white/5">
+              <TekhKarkasLogo isDark={isDark} size="sm" showSubtitle={false} />
+            </div>
             <div>
               <span className="text-xs uppercase tracking-wider text-amber-600 font-bold block">
-                Оперативний розрахунок «Техкаркас»
+                Оперативний розрахунок кошторису
               </span>
               <h3 className={`text-xl sm:text-2xl font-bold mt-1 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                 Замовити кошторис або виїзд інженера

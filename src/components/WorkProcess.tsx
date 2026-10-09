@@ -70,6 +70,19 @@ export const WorkProcess: React.FC<WorkProcessProps> = ({ isDark }) => {
                 <p className={`text-xs sm:text-sm leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                   {item.desc}
                 </p>
+
+                {(item as any).image && (
+                  <div className="mt-4 rounded-2xl overflow-hidden aspect-[16/9] relative shadow-sm border border-black/10">
+                    <img
+                      src={(item as any).image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute bottom-2 left-2 bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-bold text-amber-400">
+                      Техкаркас на об’єкті
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div

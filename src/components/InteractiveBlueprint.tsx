@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Layers, CheckCircle2, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { cottageFoundationPourImg, monolithicSlabPourImg } from '../data/mockData';
 
 interface StructuralLayer {
   id: string;
@@ -11,6 +12,7 @@ interface StructuralLayer {
   whyImportant: string;
   typicalMistake: string;
   specs: string;
+  photoUrl?: string;
 }
 
 const LAYERS: StructuralLayer[] = [
@@ -62,7 +64,8 @@ const LAYERS: StructuralLayer[] = [
     desc: 'В’язка двох ярусів арматури гарячекатаної сталі класу А500С (Ø12–Ø16 мм) з кроком 200×200 мм. З’єднання вертикальними жабками-фіксаторами.',
     whyImportant: 'Сприймає всі вигинальні моменти: нижня сітка працює на розтяг від навантаження стін, верхня — на знакозмінні ґрунтові сили.',
     typicalMistake: 'Зварювання арматури замість в’язки (порушує структуру металу) або відсутність пластикових фіксаторів захисного шару.',
-    specs: 'Захисний шар бетону суворо 35–45 мм'
+    specs: 'Захисний шар бетону суворо 35–45 мм',
+    photoUrl: cottageFoundationPourImg
   },
   {
     id: 'l6',
@@ -72,7 +75,8 @@ const LAYERS: StructuralLayer[] = [
     desc: 'Прийом важкого товарного бетону від сертифікованого заводу з додаванням гідрофобних комплексів. Безперервне пошарове вібрування глибинними вібраторами.',
     whyImportant: 'Монолітний камінь найвищої міцності, стійкий до 200 циклів замерзання та тиску води W6.',
     typicalMistake: 'Доливання води в міксер для полегшення укладання — це вбиває марку бетону на 40-50%.',
-    specs: 'Міцність на стиск ≥ 32.5 МПа (В25)'
+    specs: 'Міцність на стиск ≥ 32.5 МПа (В25)',
+    photoUrl: monolithicSlabPourImg
   }
 ];
 
@@ -242,6 +246,20 @@ export const InteractiveBlueprint: React.FC<InteractiveBlueprintProps> = ({ isDa
                     {activeLayer.desc}
                   </p>
                 </div>
+
+                {/* Real Photo Demonstration (when available) */}
+                {activeLayer.photoUrl && (
+                  <div className="rounded-2xl overflow-hidden aspect-[16/8] relative shadow-md border border-black/10">
+                    <img
+                      src={activeLayer.photoUrl}
+                      alt={activeLayer.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute bottom-2.5 left-2.5 bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-amber-400 border border-white/10">
+                      Фото контролю на об’єкті
+                    </div>
+                  </div>
+                )}
 
                 <div
                   className={`p-3.5 rounded-2xl border text-xs flex items-center gap-2 ${

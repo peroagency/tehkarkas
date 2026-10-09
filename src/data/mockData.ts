@@ -202,7 +202,7 @@ export const FORMWORK_FLEET: FormworkEquipment[] = [
       'Підкоси юстувальні для точного виставлення вертикалі',
       'Гладка грань для чистового дизайнерського лофт-бетону'
     ],
-    image: wallConcretePourImg,
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80',
     advantage: 'Будь-яка архітектурна форма колон без додаткових витрат'
   },
   {
@@ -217,7 +217,7 @@ export const FORMWORK_FLEET: FormworkEquipment[] = [
       'Жорстка клинова фіксація замків',
       'Ідеально для висотних складів та просторих залів'
     ],
-    image: monolithicSlabPourImg,
+    image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80',
     advantage: 'Можливість реалізувати нестандартні висотні проєкти'
   }
 ];
@@ -235,10 +235,10 @@ export const PROJECTS: ProjectItem[] = [
     formworkUsed: 'Стінова 310 м² + перекриття 420 м²',
     year: '2025',
     description: 'Комплексне зведення монолітного залізобетонного каркасу для котеджу в стилі High-Tech. Плитний фундамент 300 мм на піщаній подушці, колони 300×300 мм та безбалкове перекриття з консольним вильотом тераси на 3.2 метра.',
-    image: monolithicSlabPourImg,
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
     gallery: [
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
       monolithicSlabPourImg,
-      concretePumpPouringImg,
       cottageFoundationPourImg
     ],
     tags: ['Консольне перекриття', 'Плита 300 мм', 'Бетон B25', 'Власна опалубка']
@@ -255,10 +255,10 @@ export const PROJECTS: ProjectItem[] = [
     formworkUsed: 'Стінова 850 м² + вежі CUP-LOCK',
     year: '2024-2025',
     description: 'Монолітно-каркасна секція багатоквартирного будинку: ліфтові та сходові ядра жорсткості, монолітні пілони 250×800 мм та міжповерхові плити перекриття 220 мм. Використано власні опалубні системи.',
-    image: concretePumpPouringImg,
+    image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80',
     gallery: [
+      'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80',
       concretePumpPouringImg,
-      monolithicSlabPourImg,
       wallConcretePourImg
     ],
     tags: ['Генпідряд моноліту', 'Ядра жорсткості', 'Бетон B30 W8', 'Темп 1 поверх / 12 днів']
@@ -275,11 +275,11 @@ export const PROJECTS: ProjectItem[] = [
     formworkUsed: 'Щитова опалубка фундаменту 140 м²',
     year: '2025',
     description: 'Влаштування монолітної плити товщиною 350 мм з ребрами жорсткості під чашу басейну. Виконано посилене армування арматурою А500С Ø14-16 мм у 2 яруси з геодезичним контролем перепаду висот менше 2 мм.',
-    image: cottageFoundationPourImg,
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80',
     gallery: [
+      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80',
       cottageFoundationPourImg,
-      concretePumpPouringImg,
-      wallConcretePourImg
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80'
     ],
     tags: ['Фундаментна плита', 'Чаша басейну', 'Подвійне армування', 'W8 гідрофобний']
   },
@@ -295,10 +295,11 @@ export const PROJECTS: ProjectItem[] = [
     formworkUsed: 'Направляючі рейки + шліфувальні машини',
     year: '2025',
     description: 'Влаштування армованої бетонної підлоги товщиною 200 мм з кварцово-корундовим зміцнювачем (топінгом). Розрахована на інтенсивний рух вантажівок та складських навантажувачів до 8 т на вісь.',
-    image: floorConcretePourImg,
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80',
     gallery: [
+      'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80',
       floorConcretePourImg,
-      concretePumpPouringImg
+      'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=80'
     ],
     tags: ['Топінг 4.5 кг/м²', 'Шви деформаційні', 'Бетон B25', 'Дзеркальна затирка']
   },
@@ -314,8 +315,9 @@ export const PROJECTS: ProjectItem[] = [
     formworkUsed: 'Крупнощитова стінова опалубка 260 м²',
     year: '2024',
     description: 'Складна інженерна споруда для укріплення схилу та фундаменту будинку. Пальовий ростверк на буроін’єкційних палях глибиною 7 метрів та монолітна кутова підпірна стіна висотою 3.6 м.',
-    image: wallConcretePourImg,
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
     gallery: [
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
       wallConcretePourImg,
       cottageFoundationPourImg
     ],
@@ -333,12 +335,53 @@ export const PROJECTS: ProjectItem[] = [
     formworkUsed: 'Перекриття 290 м² + колони 80 м²',
     year: '2025',
     description: 'Повний монолітний конструктив 2-поверхового котеджу: стрічковий фундамент, 14 монолітних колон, міжповерхове перекриття та плоска монолітна експлуатована покрівля під зону BBQ.',
-    image: monolithicSlabPourImg,
+    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80',
     gallery: [
+      'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80',
       monolithicSlabPourImg,
       concretePumpPouringImg
     ],
     tags: ['Експлуатована покрівля', 'Стрічковий фундамент', 'Бетон B25 P4', 'Чіткі терміни']
+  },
+  {
+    id: 'p7',
+    title: 'Торгово-діловий центр з відкритими колонами',
+    category: 'multistorey',
+    categoryLabel: 'Комерційне будівництво',
+    location: 'м. Львів, Сихівський р-н',
+    concreteVolume: '1 420 м³',
+    area: '2 100 м²',
+    duration: '2.5 місяці',
+    formworkUsed: 'Колонна 280 м² + перекриття 1900 м²',
+    year: '2024',
+    description: 'Зведення монолітно-каркасного конструктиву сучасного офісного центру: 32 високі монолітні колони 400×400 мм, безбалкові перекриття з висотою стелі 4.2 м під відкриті комунікації.',
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80',
+      wallConcretePourImg,
+      monolithicSlabPourImg
+    ],
+    tags: ['Високі колони 4.2м', 'Безбалковий каркас', 'Бетон B30', 'Швидкісний темп']
+  },
+  {
+    id: 'p8',
+    title: 'Заміська вілла з басейном та каскадним рельєфом',
+    category: 'cottage',
+    categoryLabel: 'Приватна вілла',
+    location: 'с. Наварія, Львівський р-н',
+    concreteVolume: '310 м³',
+    area: '480 м²',
+    duration: '32 робочих дні',
+    formworkUsed: 'Стінова 340 м² + перекриття 480 м²',
+    year: '2025',
+    description: 'Каскадний монолітний комплекс на березі озера: комбінований плитний фундамент з приямками, чаша відкритого переливного басейну 10×4 м та монолітні перекриття під скляні розсувні фасади.',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+      cottageFoundationPourImg,
+      monolithicSlabPourImg
+    ],
+    tags: ['Чаша басейну 10х4м', 'Каскадний рельєф', 'Гідроізоляція W8', 'Панорамні прольоти']
   }
 ];
 
@@ -532,12 +575,14 @@ export const WORK_PROCESS_STEPS = [
   {
     step: '03',
     title: 'Доставка власної опалубки та армування',
-    desc: 'Завозимо власний парк щитів та стійок. В’яжемо просторові каркаси згідно з ДБН з дотриманням захисних шарів та анкерування.'
+    desc: 'Завозимо власний парк щитів та стійок. В’яжемо просторові каркаси згідно з ДБН з дотриманням захисних шарів та анкерування.',
+    image: wallConcretePourImg
   },
   {
     step: '04',
     title: 'Бетонування автобетононасосом та вібрування',
-    desc: 'Прийом сертифікованого товарного бетону. Обов’язкове безперервне пошарове ущільнення глибинними високочастотними вібраторами.'
+    desc: 'Прийом сертифікованого товарного бетону. Обов’язкове безперервне пошарове ущільнення глибинними високочастотними вібраторами.',
+    image: concretePumpPouringImg
   },
   {
     step: '05',

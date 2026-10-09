@@ -242,13 +242,45 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation, isDark }) => {
             </motion.div>
           </div>
 
-          {/* Quick Metrics Card */}
+          {/* Quick Metrics & Live Pouring Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="lg:col-span-4 space-y-4"
           >
+            {/* Live Pouring Photo Card */}
+            <div
+              className={`p-2.5 rounded-3xl border shadow-lg overflow-hidden group transition-all ${
+                isDark
+                  ? 'bg-[#151922] border-white/10 hover:border-amber-500/40'
+                  : 'bg-white border-slate-200 hover:border-amber-500/50 shadow-slate-200/60'
+              }`}
+            >
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-900">
+                <img
+                  src={concretePumpPouringImg}
+                  alt="Подача та заливка бетону автобетононасосом Техкаркас"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                
+                <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md px-3 py-1 rounded-lg border border-white/15 text-[11px] font-bold text-amber-400 flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Бетонування на об’єктах Львова</span>
+                </div>
+
+                <div className="absolute bottom-3 left-3 right-3 text-white">
+                  <div className="text-xs font-bold leading-snug">
+                    Власна опалубка + безперервний прийом бетону
+                  </div>
+                  <div className="text-[10px] text-amber-300 font-medium mt-0.5">
+                    Автобетононасоси від 24 до 52 метрів • Віброущільнення
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div
               className={`p-6 sm:p-7 rounded-3xl border shadow-xl backdrop-blur-md ${
                 isDark

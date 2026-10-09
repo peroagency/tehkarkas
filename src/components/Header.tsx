@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Phone, MapPin, Clock, Menu, X, ArrowUpRight, Sun, Moon, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { COMPANY_INFO } from '../data/mockData';
+import { TekhKarkasLogo } from './TekhKarkasLogo';
 
 interface HeaderProps {
   onOpenConsultation: () => void;
@@ -84,41 +85,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenConsultation, isDark, onTo
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            {/* Architectural Concrete Icon */}
-            <motion.div
-              whileHover={{ rotate: 90 }}
-              transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-              className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 p-[1px] flex items-center justify-center shadow-md shadow-amber-500/20"
-            >
-              <div
-                className={`w-full h-full rounded-[11px] flex items-center justify-center relative overflow-hidden transition-colors ${
-                  isDark ? 'bg-[#111418]' : 'bg-white'
-                }`}
-              >
-                <div className="w-4 h-4 border-2 border-amber-600 transform rotate-45" />
-              </div>
-            </motion.div>
-
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span
-                  className={`font-display text-xl sm:text-2xl font-black tracking-tight uppercase ${
-                    isDark ? 'text-white' : 'text-slate-900'
-                  }`}
-                >
-                  ТЕХ<span className="text-amber-600">КАРКАС</span>
-                </span>
-              </div>
-              <span
-                className={`block text-[10px] uppercase tracking-widest font-semibold ${
-                  isDark ? 'text-slate-400' : 'text-slate-500'
-                }`}
-              >
-                Монолітне будівництво • Львів
-              </span>
-            </div>
+          {/* Brand Logo */}
+          <a href="#" aria-label="Техкаркас - Головна">
+            <TekhKarkasLogo isDark={isDark} size="md" />
           </a>
 
           {/* Desktop Navigation Links */}

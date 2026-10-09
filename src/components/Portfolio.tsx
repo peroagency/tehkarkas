@@ -12,10 +12,16 @@ interface PortfolioProps {
 export const Portfolio: React.FC<PortfolioProps> = ({ onOpenConsultation, isDark }) => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'cottage' | 'multistorey' | 'foundation' | 'floors'>('all');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [activeImageIdx, setActiveImageIdx] = useState<number>(0);
 
   const filteredProjects = activeFilter === 'all'
     ? PROJECTS
     : PROJECTS.filter((p) => p.category === activeFilter);
+
+  const handleOpenProject = (project: ProjectItem) => {
+    setSelectedProject(project);
+    setActiveImageIdx(0);
+  };
 
   return (
     <section
@@ -113,7 +119,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenConsultation, isDark
                 transition={{ duration: 0.3 }}
                 whileHover={{ y: -6 }}
                 key={project.id}
-                onClick={() => setSelectedProject(project)}
+                onClick={() => handleOpenProject(project)}
                 className={`group rounded-3xl border overflow-hidden cursor-pointer flex flex-col shadow-md transition-shadow hover:shadow-xl ${
                   isDark
                     ? 'bg-[#15181f] border-white/5 hover:border-amber-500/40'
@@ -232,12 +238,49 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenConsultation, isDark
                   </h3>
                 </div>
 
-                <div className="rounded-2xl overflow-hidden aspect-[16/9] shadow-md">
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className="w-full h-full object-cover"
-                  />
+                {/* Main Modal Image Display */}
+                <div className="space-y-3">
+                  <div className="relative rounded-2xl overflow-hidden aspect-[16/9] shadow-lg bg-slate-900 border border-black/20">
+                    <img
+                      src={selectedProject.gallery?.[activeImageIdx] || selectedProject.image}
+                      alt={`${selectedProject.title} - фото ${activeImageIdx + 1}`}
+                      className="w-full h-full object-cover transition-all duration-300"
+                    />
+                    <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10 text-xs font-bold text-amber-400">
+                      {activeImageIdx === 0
+                        ? '📸 Готовий об’єкт'
+                        : activeImageIdx === 1
+                        ? '🏗️ Процес заливки бетону'
+                        : '📐 Армування та опалубка'}
+                    </div>
+                    <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] text-white font-mono">
+                      {activeImageIdx + 1} / {selectedProject.gallery?.length || 1}
+                    </div>
+                  </div>
+
+                  {/* Thumbnail Row */}
+                  {selectedProject.gallery && selectedProject.gallery.length > 1 && (
+                    <div className="flex items-center gap-3 overflow-x-auto pb-1">
+                      {selectedProject.gallery.map((thumbUrl, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setActiveImageIdx(idx)}
+                          className={`relative rounded-xl overflow-hidden w-20 h-14 sm:w-24 sm:h-16 flex-shrink-0 border-2 transition-all cursor-pointer ${
+                            activeImageIdx === idx
+                              ? 'border-amber-500 ring-2 ring-amber-500/30 scale-105'
+                              : 'border-transparent opacity-60 hover:opacity-100 hover:scale-102'
+                          }`}
+                        >
+                          <img
+                            src={thumbUrl}
+                            alt=""
+                            className="w-full h-full object-cover"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

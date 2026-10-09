@@ -70,6 +70,13 @@ export interface FAQItem {
   category: string;
 }
 
+export interface WorkStepItem {
+  step: string;
+  title: string;
+  desc: string;
+  image?: string;
+}
+
 export interface CalculationInput {
   structureType: 'foundation_slab' | 'strip_foundation' | 'slab_floor' | 'columns_walls' | 'concrete_floor';
   length: number; // m

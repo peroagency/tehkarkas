@@ -1,6 +1,7 @@
 import React from 'react';
 import { COMPANY_INFO } from '../data/mockData';
 import { Phone, MapPin, ArrowUp } from 'lucide-react';
+import { TekhKarkasLogo } from './TekhKarkasLogo';
 
 interface FooterProps {
   isDark: boolean;
@@ -21,16 +22,9 @@ export const Footer: React.FC<FooterProps> = ({ isDark }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl bg-amber-500 p-[1px] flex items-center justify-center">
-                <div className="w-full h-full bg-[#111418] rounded-[10px] flex items-center justify-center">
-                  <div className="w-3.5 h-3.5 border-2 border-amber-500 transform rotate-45" />
-                </div>
-              </div>
-              <span className="font-display text-xl font-black tracking-tight text-white uppercase">
-                ТЕХ<span className="text-amber-500">КАРКАС</span>
-              </span>
-            </div>
+            <a href="#" aria-label="Техкаркас - Головна">
+              <TekhKarkasLogo isDark={true} size="md" />
+            </a>
 
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
               Спеціалізована будівельна компанія з монолітного залізобетонного будівництва. 
