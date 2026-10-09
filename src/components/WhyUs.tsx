@@ -1,8 +1,13 @@
 import React from 'react';
-import { ShieldCheck, Ruler, Award, Truck, Check, Sparkles, Building, Layers } from 'lucide-react';
+import { motion } from 'motion/react';
+import { ShieldCheck, Ruler, Award, Truck, Check, Building, Layers } from 'lucide-react';
 import { COMPANY_INFO } from '../data/mockData';
 
-export const WhyUs: React.FC = () => {
+interface WhyUsProps {
+  isDark: boolean;
+}
+
+export const WhyUs: React.FC<WhyUsProps> = ({ isDark }) => {
   const advantages = [
     {
       icon: Layers,
@@ -43,56 +48,96 @@ export const WhyUs: React.FC = () => {
   ];
 
   return (
-    <section id="why-us" className="py-24 bg-[#121519] scroll-mt-20 border-b border-white/5 relative">
+    <section
+      id="why-us"
+      className={`py-24 scroll-mt-20 border-b relative transition-colors duration-200 ${
+        isDark ? 'bg-[#121519] border-white/5' : 'bg-white border-slate-200'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-amber-400 mb-3">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <div className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-600 mb-3">
             <span>06</span>
             <span aria-hidden="true">·</span>
             <span>Чому обирають «Техкаркас»</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
+          <h2
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 ${
+              isDark ? 'text-white' : 'text-slate-900'
+            }`}
+          >
             Безкомпромісна якість залізобетону
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg">
+          <p className={`text-base sm:text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
             Фундамент і монолітний каркас — основа безпеки всього будинку. 
             Ми будуємо так, щоб споруда надійно стояла століттями.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {advantages.map((item, idx) => {
             const IconComponent = item.icon;
 
             return (
-              <div
+              <motion.div
+                whileHover={{ y: -6 }}
                 key={idx}
-                className="p-7 rounded-2xl bg-[#171b23] border border-white/5 hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between group shadow-xl"
+                className={`p-7 rounded-3xl border transition-all flex flex-col justify-between group shadow-sm hover:shadow-xl ${
+                  isDark
+                    ? 'bg-[#171b23] border-white/5 hover:border-amber-500/40'
+                    : 'bg-slate-50 border-slate-200 hover:border-amber-500/50'
+                }`}
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className="p-3 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 group-hover:bg-amber-500 group-hover:text-black transition-colors">
+                    <div
+                      className={`p-3 rounded-2xl border transition-colors ${
+                        isDark
+                          ? 'bg-amber-500/10 text-amber-400 border-amber-500/20 group-hover:bg-amber-500 group-hover:text-black'
+                          : 'bg-amber-100/70 text-amber-700 border-amber-200 group-hover:bg-amber-500 group-hover:text-slate-950'
+                      }`}
+                    >
                       <IconComponent className="w-5 h-5" />
                     </div>
-                    <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-md bg-white/5 text-amber-400 border border-white/5">
+                    <span
+                      className={`text-[11px] font-mono font-bold px-3 py-1 rounded-full border ${
+                        isDark
+                          ? 'bg-white/5 text-amber-400 border-white/5'
+                          : 'bg-white text-amber-700 border-slate-200 shadow-sm'
+                      }`}
+                    >
                       {item.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">
+                  <h3
+                    className={`text-lg font-bold group-hover:text-amber-600 transition-colors ${
+                      isDark ? 'text-white' : 'text-slate-900'
+                    }`}
+                  >
                     {item.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  <p className={`text-xs sm:text-sm leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                     {item.desc}
                   </p>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-white/5 flex items-center gap-1.5 text-xs text-emerald-400 font-medium">
+                <div
+                  className={`pt-4 mt-4 border-t flex items-center gap-1.5 text-xs font-bold text-emerald-600 ${
+                    isDark ? 'border-white/5' : 'border-slate-200'
+                  }`}
+                >
                   <Check className="w-3.5 h-3.5" />
                   <span>Гарантовано на 100% об’єктів</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

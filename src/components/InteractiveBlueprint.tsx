@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Layers, CheckCircle2, AlertTriangle, ShieldCheck, Info } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Layers, CheckCircle2, AlertTriangle, ShieldCheck } from 'lucide-react';
 
 interface StructuralLayer {
   id: string;
@@ -75,36 +76,58 @@ const LAYERS: StructuralLayer[] = [
   }
 ];
 
-export const InteractiveBlueprint: React.FC = () => {
+interface InteractiveBlueprintProps {
+  isDark: boolean;
+}
+
+export const InteractiveBlueprint: React.FC<InteractiveBlueprintProps> = ({ isDark }) => {
   const [activeLayerId, setActiveLayerId] = useState<string>('l6');
 
   const activeLayer = LAYERS.find((l) => l.id === activeLayerId) || LAYERS[5];
 
   return (
-    <section className="py-24 bg-[#0a0c0e] relative border-b border-white/5">
+    <section
+      className={`py-24 relative border-b transition-colors duration-200 ${
+        isDark ? 'bg-[#0a0c0e] border-white/5' : 'bg-white border-slate-200'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 text-xs font-bold uppercase tracking-wider mb-3">
             <Layers className="w-3.5 h-3.5" />
             <span>Інженерний розріз конструкції</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
+          <h2
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 ${
+              isDark ? 'text-white' : 'text-slate-900'
+            }`}
+          >
             Анатомія надійного залізобетону
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg">
+          <p className={`text-base sm:text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
             Подивіться, як влаштований правильний моноліт за стандартами «Техкаркас». 
             Жоден шар не можна пропускати або здешевлювати.
           </p>
-        </div>
+        </motion.div>
 
         {/* Interactive Schematic & Layer Explorer */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Layer Selector Stack (Visual Cross Section) */}
+          {/* Layer Selector Stack */}
           <div className="lg:col-span-6 space-y-2">
-            <div className="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3 flex items-center justify-between">
-              <span>Схема шарів (клікніть на шар для аналізу):</span>
-              <span className="text-amber-400 font-mono text-[11px]">Зверху вниз</span>
+            <div
+              className={`text-xs uppercase tracking-wider font-bold mb-3 flex items-center justify-between ${
+                isDark ? 'text-slate-400' : 'text-slate-500'
+              }`}
+            >
+              <span>Схема шарів (клікніть для деталей):</span>
+              <span className="text-amber-600 font-mono text-[11px]">Зверху вниз</span>
             </div>
 
             <div className="space-y-2.5">
@@ -112,26 +135,45 @@ export const InteractiveBlueprint: React.FC = () => {
                 const isSelected = activeLayerId === layer.id;
 
                 return (
-                  <button
+                  <motion.button
+                    whileHover={{ x: 4 }}
                     key={layer.id}
                     type="button"
                     onClick={() => setActiveLayerId(layer.id)}
-                    className={`w-full p-4 rounded-xl border text-left transition-all flex items-center justify-between gap-4 cursor-pointer ${
+                    className={`w-full p-4 rounded-2xl border text-left transition-all flex items-center justify-between gap-4 cursor-pointer ${
                       isSelected
-                        ? 'bg-gradient-to-r from-amber-500/20 via-amber-500/10 to-[#181d24] border-amber-500 text-white shadow-lg'
-                        : 'bg-[#12161c] border-white/5 text-slate-300 hover:border-white/20 hover:text-white'
+                        ? isDark
+                          ? 'bg-gradient-to-r from-amber-500/20 via-amber-500/10 to-[#181d24] border-amber-500 text-white shadow-lg'
+                          : 'bg-amber-50 border-amber-500 text-slate-900 shadow-md ring-2 ring-amber-500/20'
+                        : isDark
+                        ? 'bg-[#12161c] border-white/5 text-slate-300 hover:border-white/20 hover:text-white'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-100'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <span
-                        className={`font-mono text-xs px-2 py-1 rounded font-bold ${
-                          isSelected ? 'bg-amber-500 text-black' : 'bg-white/5 text-slate-400'
+                        className={`font-mono text-xs px-2.5 py-1 rounded-lg font-bold ${
+                          isSelected
+                            ? 'bg-amber-500 text-slate-950'
+                            : isDark
+                            ? 'bg-white/5 text-slate-400'
+                            : 'bg-slate-200 text-slate-600'
                         }`}
                       >
                         {layer.number}
                       </span>
                       <div>
-                        <div className="font-semibold text-sm sm:text-base leading-snug">
+                        <div
+                          className={`font-bold text-sm sm:text-base leading-snug ${
+                            isSelected
+                              ? isDark
+                                ? 'text-white'
+                                : 'text-slate-950'
+                              : isDark
+                              ? 'text-slate-200'
+                              : 'text-slate-800'
+                          }`}
+                        >
                           {layer.title}
                         </div>
                         <div className="text-xs text-slate-400 font-mono mt-0.5">
@@ -142,72 +184,103 @@ export const InteractiveBlueprint: React.FC = () => {
 
                     <div className="shrink-0 text-right">
                       {isSelected ? (
-                        <span className="text-xs font-semibold text-amber-400 flex items-center gap-1">
+                        <span className="text-xs font-bold text-amber-600 flex items-center gap-1">
                           Деталі →
                         </span>
                       ) : (
-                        <span className="text-xs text-slate-500 font-mono">{layer.specs.slice(0, 18)}...</span>
+                        <span className="text-xs text-slate-400 font-mono">{layer.specs.slice(0, 18)}...</span>
                       )}
                     </div>
-                  </button>
+                  </motion.button>
                 );
               })}
             </div>
           </div>
 
           {/* Active Layer Deep Dive Card */}
-          <div className="lg:col-span-6 bg-[#151921] rounded-2xl border border-amber-500/30 p-6 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden">
-            <div className="flex items-center justify-between border-b border-white/10 pb-4">
-              <div>
-                <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">
-                  Шар {activeLayer.number} · {activeLayer.depth}
-                </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
-                  {activeLayer.title}
-                </h3>
-              </div>
-              <div className="p-3 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-            </div>
+          <div className="lg:col-span-6">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeLayer.id}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                className={`rounded-3xl border p-6 sm:p-8 space-y-6 shadow-2xl relative ${
+                  isDark
+                    ? 'bg-[#151921] border-amber-500/40'
+                    : 'bg-white border-amber-500/50 shadow-slate-200/80 ring-1 ring-amber-500/15'
+                }`}
+              >
+                <div
+                  className={`flex items-center justify-between border-b pb-4 ${
+                    isDark ? 'border-white/10' : 'border-slate-100'
+                  }`}
+                >
+                  <div>
+                    <span className="text-xs font-mono font-bold text-amber-600 uppercase tracking-wider">
+                      Шар {activeLayer.number} · {activeLayer.depth}
+                    </span>
+                    <h3 className={`text-xl sm:text-2xl font-bold mt-1 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                      {activeLayer.title}
+                    </h3>
+                  </div>
+                  <div className="p-3 rounded-2xl bg-amber-500/10 text-amber-600 border border-amber-500/20">
+                    <ShieldCheck className="w-6 h-6" />
+                  </div>
+                </div>
 
-            {/* Description */}
-            <div>
-              <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold block mb-1">
-                Технологічний процес:
-              </span>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                {activeLayer.desc}
-              </p>
-            </div>
+                <div>
+                  <span
+                    className={`text-xs uppercase tracking-wider font-bold block mb-1 ${
+                      isDark ? 'text-slate-400' : 'text-slate-500'
+                    }`}
+                  >
+                    Технологічний процес «Техкаркас»:
+                  </span>
+                  <p className={`text-sm sm:text-base leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
+                    {activeLayer.desc}
+                  </p>
+                </div>
 
-            {/* Standard parameter spec */}
-            <div className="p-3 rounded-xl bg-[#0e1014] border border-white/5 text-xs text-slate-300 flex items-center gap-2">
-              <span className="text-amber-400 font-mono font-bold">ДСТУ / ДБН норматив:</span>
-              <span>{activeLayer.specs}</span>
-            </div>
+                <div
+                  className={`p-3.5 rounded-2xl border text-xs flex items-center gap-2 ${
+                    isDark ? 'bg-[#0e1014] border-white/5 text-slate-300' : 'bg-slate-50 border-slate-200 text-slate-700'
+                  }`}
+                >
+                  <span className="text-amber-600 font-mono font-bold">ДСТУ / ДБН норматив:</span>
+                  <span>{activeLayer.specs}</span>
+                </div>
 
-            {/* Why critical */}
-            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 space-y-1">
-              <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Чому це критично важливо:</span>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-300">
-                {activeLayer.whyImportant}
-              </p>
-            </div>
+                <div
+                  className={`p-4 rounded-2xl border space-y-1 ${
+                    isDark ? 'bg-emerald-500/10 border-emerald-500/20' : 'bg-emerald-50 border-emerald-200'
+                  }`}
+                >
+                  <div className="flex items-center gap-2 text-emerald-600 text-xs font-bold uppercase tracking-wider">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Чому це критично важливо:</span>
+                  </div>
+                  <p className={`text-xs sm:text-sm ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
+                    {activeLayer.whyImportant}
+                  </p>
+                </div>
 
-            {/* Common amateur mistake */}
-            <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 space-y-1">
-              <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
-                <AlertTriangle className="w-4 h-4" />
-                <span>Типова помилка недосвідчених бригад:</span>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-300">
-                {activeLayer.typicalMistake}
-              </p>
-            </div>
+                <div
+                  className={`p-4 rounded-2xl border space-y-1 ${
+                    isDark ? 'bg-amber-500/10 border-amber-500/20' : 'bg-amber-50 border-amber-200'
+                  }`}
+                >
+                  <div className="flex items-center gap-2 text-amber-600 text-xs font-bold uppercase tracking-wider">
+                    <AlertTriangle className="w-4 h-4" />
+                    <span>Типова помилка недосвідчених бригад:</span>
+                  </div>
+                  <p className={`text-xs sm:text-sm ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
+                    {activeLayer.typicalMistake}
+                  </p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>

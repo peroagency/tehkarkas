@@ -1,5 +1,19 @@
 import { ServiceItem, FormworkEquipment, ProjectItem, PriceTier, FAQItem, ReviewItem } from '../types';
 
+import concretePumpPouringImg from '../assets/images/concrete_pump_pouring_1791536530477.jpg';
+import monolithicSlabPourImg from '../assets/images/monolithic_slab_pour_1791536549269.jpg';
+import wallConcretePourImg from '../assets/images/wall_concrete_pour_1791536567892.jpg';
+import floorConcretePourImg from '../assets/images/floor_concrete_pour_1791536588536.jpg';
+import cottageFoundationPourImg from '../assets/images/cottage_foundation_pour_1791536609863.jpg';
+
+export {
+  concretePumpPouringImg,
+  monolithicSlabPourImg,
+  wallConcretePourImg,
+  floorConcretePourImg,
+  cottageFoundationPourImg,
+};
+
 export const COMPANY_INFO = {
   name: 'Техкаркас',
   fullName: 'ТОВ «Техкаркас Моноліт»',
@@ -27,7 +41,7 @@ export const SERVICES: ServiceItem[] = [
     category: 'both',
     unit: 'м³ бетону',
     priceFrom: 1650,
-    imageUrl: 'https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: cottageFoundationPourImg,
     features: [
       'Монолітні плити будь-якої товщини (250–600 мм)',
       'Стрічкові фундаменти в нашій щитовій опалубці',
@@ -52,7 +66,7 @@ export const SERVICES: ServiceItem[] = [
     category: 'both',
     unit: 'м² / м³',
     priceFrom: 1850,
-    imageUrl: 'https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: monolithicSlabPourImg,
     features: [
       'Безбалкові плити перекриття товщиною 160–300 мм',
       'Консольні вильоти під сучасні панорамні тераси',
@@ -77,7 +91,7 @@ export const SERVICES: ServiceItem[] = [
     category: 'both',
     unit: 'м³ бетону',
     priceFrom: 2100,
-    imageUrl: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: wallConcretePourImg,
     features: [
       'Круглі, квадратні та прямокутні колони будь-якого перерізу',
       'Монолітні діафрагми жорсткості та ядра (ліфтові шахти)',
@@ -102,7 +116,7 @@ export const SERVICES: ServiceItem[] = [
     category: 'both',
     unit: 'м²',
     priceFrom: 380,
-    imageUrl: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: floorConcretePourImg,
     features: [
       'Зміцнення верхнього шару топінгом (кварц / корунд)',
       'Затирка затирочними машинами (двохроторні «вертольоти»)',
@@ -127,7 +141,7 @@ export const SERVICES: ServiceItem[] = [
     category: 'both',
     unit: 'м³ / м²',
     priceFrom: 1450,
-    imageUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: concretePumpPouringImg,
     features: [
       'Власна опалубка 4850+ м² в наявності у Львові',
       'В’язка арматури гачками та в’язальними пістолетами',
@@ -158,7 +172,7 @@ export const FORMWORK_FLEET: FormworkEquipment[] = [
       'Внутрішні та зовнішні кутові елементи під будь-який радіус',
       'Вологостійка фінська фанера 21 мм'
     ],
-    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?auto=format&fit=crop&w=1000&q=80',
+    image: wallConcretePourImg,
     advantage: 'Не орендуємо у третіх осіб — ви економите 20-30% бюджету'
   },
   {
@@ -173,7 +187,7 @@ export const FORMWORK_FLEET: FormworkEquipment[] = [
       'Унівилки та триноги підвищеної стійкості',
       'Мінімальна потреба в штукатурці після розпалубки'
     ],
-    image: 'https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=1000&q=80',
+    image: monolithicSlabPourImg,
     advantage: 'Забезпечує готовність перекриття до заливки за 4–7 днів'
   },
   {
@@ -188,7 +202,7 @@ export const FORMWORK_FLEET: FormworkEquipment[] = [
       'Підкоси юстувальні для точного виставлення вертикалі',
       'Гладка грань для чистового дизайнерського лофт-бетону'
     ],
-    image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1000&q=80',
+    image: wallConcretePourImg,
     advantage: 'Будь-яка архітектурна форма колон без додаткових витрат'
   },
   {
@@ -203,7 +217,7 @@ export const FORMWORK_FLEET: FormworkEquipment[] = [
       'Жорстка клинова фіксація замків',
       'Ідеально для висотних складів та просторих залів'
     ],
-    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1000&q=80',
+    image: monolithicSlabPourImg,
     advantage: 'Можливість реалізувати нестандартні висотні проєкти'
   }
 ];
@@ -221,11 +235,11 @@ export const PROJECTS: ProjectItem[] = [
     formworkUsed: 'Стінова 310 м² + перекриття 420 м²',
     year: '2025',
     description: 'Комплексне зведення монолітного залізобетонного каркасу для котеджу в стилі High-Tech. Плитний фундамент 300 мм на піщаній подушці, колони 300×300 мм та безбалкове перекриття з консольним вильотом тераси на 3.2 метра.',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    image: monolithicSlabPourImg,
     gallery: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=1200&q=80'
+      monolithicSlabPourImg,
+      concretePumpPouringImg,
+      cottageFoundationPourImg
     ],
     tags: ['Консольне перекриття', 'Плита 300 мм', 'Бетон B25', 'Власна опалубка']
   },
@@ -241,11 +255,11 @@ export const PROJECTS: ProjectItem[] = [
     formworkUsed: 'Стінова 850 м² + вежі CUP-LOCK',
     year: '2024-2025',
     description: 'Монолітно-каркасна секція багатоквартирного будинку: ліфтові та сходові ядра жорсткості, монолітні пілони 250×800 мм та міжповерхові плити перекриття 220 мм. Використано власні опалубні системи.',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
+    image: concretePumpPouringImg,
     gallery: [
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80'
+      concretePumpPouringImg,
+      monolithicSlabPourImg,
+      wallConcretePourImg
     ],
     tags: ['Генпідряд моноліту', 'Ядра жорсткості', 'Бетон B30 W8', 'Темп 1 поверх / 12 днів']
   },
@@ -261,10 +275,11 @@ export const PROJECTS: ProjectItem[] = [
     formworkUsed: 'Щитова опалубка фундаменту 140 м²',
     year: '2025',
     description: 'Влаштування монолітної плити товщиною 350 мм з ребрами жорсткості під чашу басейну. Виконано посилене армування арматурою А500С Ø14-16 мм у 2 яруси з геодезичним контролем перепаду висот менше 2 мм.',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+    image: cottageFoundationPourImg,
     gallery: [
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?auto=format&fit=crop&w=1200&q=80'
+      cottageFoundationPourImg,
+      concretePumpPouringImg,
+      wallConcretePourImg
     ],
     tags: ['Фундаментна плита', 'Чаша басейну', 'Подвійне армування', 'W8 гідрофобний']
   },
@@ -280,10 +295,10 @@ export const PROJECTS: ProjectItem[] = [
     formworkUsed: 'Направляючі рейки + шліфувальні машини',
     year: '2025',
     description: 'Влаштування армованої бетонної підлоги товщиною 200 мм з кварцово-корундовим зміцнювачем (топінгом). Розрахована на інтенсивний рух вантажівок та складських навантажувачів до 8 т на вісь.',
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
+    image: floorConcretePourImg,
     gallery: [
-      'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1200&q=80'
+      floorConcretePourImg,
+      concretePumpPouringImg
     ],
     tags: ['Топінг 4.5 кг/м²', 'Шви деформаційні', 'Бетон B25', 'Дзеркальна затирка']
   },
@@ -299,9 +314,10 @@ export const PROJECTS: ProjectItem[] = [
     formworkUsed: 'Крупнощитова стінова опалубка 260 м²',
     year: '2024',
     description: 'Складна інженерна споруда для укріплення схилу та фундаменту будинку. Пальовий ростверк на буроін’єкційних палях глибиною 7 метрів та монолітна кутова підпірна стіна висотою 3.6 м.',
-    image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80',
+    image: wallConcretePourImg,
     gallery: [
-      'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80'
+      wallConcretePourImg,
+      cottageFoundationPourImg
     ],
     tags: ['Підпірна стіна 3.6м', 'Пальовий ростверк', 'Складний рельєф', 'Дренажна система']
   },
@@ -317,9 +333,10 @@ export const PROJECTS: ProjectItem[] = [
     formworkUsed: 'Перекриття 290 м² + колони 80 м²',
     year: '2025',
     description: 'Повний монолітний конструктив 2-поверхового котеджу: стрічковий фундамент, 14 монолітних колон, міжповерхове перекриття та плоска монолітна експлуатована покрівля під зону BBQ.',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    image: monolithicSlabPourImg,
     gallery: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'
+      monolithicSlabPourImg,
+      concretePumpPouringImg
     ],
     tags: ['Експлуатована покрівля', 'Стрічковий фундамент', 'Бетон B25 P4', 'Чіткі терміни']
   }

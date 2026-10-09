@@ -16,19 +16,26 @@
   }
 }
 
-/* Custom architectural hairline patterns and utilities */
-.bg-grid-pattern {
-  background-size: 40px 40px;
+/* Subtle architectural patterns */
+.bg-grid-light {
+  background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
 }
 
-.bg-blueprint-pattern {
+.bg-grid-dark {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+.bg-blueprint-light {
   background-size: 24px 24px;
   background-image: 
-    linear-gradient(to right, rgba(234, 179, 8, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(234, 179, 8, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(217, 119, 6, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 119, 6, 0.07) 1px, transparent 1px);
 }
 
 /* Custom scrollbar */
@@ -38,14 +45,20 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f1216;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #272f3a;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a4556;
+  background: #94a3b8;
+}
+
+/* Smooth selection */
+::selection {
+  background-color: rgba(245, 158, 11, 0.25);
+  color: #92400e;
 }
